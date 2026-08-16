@@ -136,26 +136,30 @@ p {
 }
 
 @media (max-width: 600px) {
-    .container {
-        max-width: 95%;
-        /* biar tidak sempit di HP */
-        margin: 15px auto;
-        padding: 5%;
-    }
+  body {
+    padding: 10px; /* beri ruang di sisi layar */
+  }
 
-    .profile-title {
-        flex-direction: column;
-        /* foto di atas teks kalau layar sempit */
-        gap: 10px;
-    }
+  .container {
+    max-width: 95%;   /* biar tidak sempit */
+    margin: 20px auto; /* jarak dari tepi layar */
+    padding: 15px;     /* isi konten lebih lega */
+  }
 
-    .profile-img {
-        width: 80px;
-        height: 80px;
-    }
+  .profile-title {
+    flex-direction: column; /* foto di atas nama saat layar kecil */
+    gap: 10px;
+    padding: 15px;
+  }
 
-    h3 {
-        font-size: 18px;
-        padding: 5px;
-    }
+  h3 {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 10px;
+  }
 }
