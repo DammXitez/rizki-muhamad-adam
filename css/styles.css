@@ -48,6 +48,10 @@ p {
     text-align: center;
 }
 
+.hr {
+    max-width: 400px;
+}
+
 .footer {
     font-family: 'Plus Jakarta Sans', sans-serif;
     text-align: center;
@@ -94,7 +98,6 @@ p {
 .profile-img:hover {
     transform: scale(1.1);
 }
-
 
 .menu {
     position: absolute;
