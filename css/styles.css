@@ -1,0 +1,130 @@
+/* Type Selector */
+body {
+    background: linear-gradient(to top, #000000, #1a1a1a, white);
+    background-size: 200% 200%;
+    animation: movebg 5s linear infinite;
+}
+
+@keyframes movebg {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+hr {
+    max-width: 350px;
+}
+
+h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: white;
+    padding: 2%;
+    border-radius: 15px;
+}
+
+p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: justify;
+    padding: 2%;
+}
+
+/* Class Selector */
+.container {
+    background-color: white;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 1%;
+    border-radius: 15px;
+    border: black solid 0.50mm;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.h3indiv {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+}
+
+.footer {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+/* Efek awal: elemen transparan */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Efek aktif: elemen muncul */
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-title {
+    display: flex;
+    align-items: center;   /* sejajarkan vertikal */
+    justify-content: center; /* posisikan di tengah */
+    gap: 15px;             /* jarak antara foto dan teks */
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 450px;
+    margin: 20px auto;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+
+.menu {
+  position: absolute;
+  top: 100px; /* muncul di bawah foto */
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 999; /* penting agar tidak ketutup elemen lain */
+}
+
+.menu li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.menu li:hover {
+  background-color: #f0f0f0;
+}
+
+.menu.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
