@@ -1,135 +1,229 @@
-/* Type Selector */
+/* ==========================================================================
+   1. RESET & SMOOTH SCROLLING
+   ========================================================================== */
+html {
+    /* Smooth scroll saat mengklik menu navigasi */
+    scroll-behavior: smooth;
+    
+    /* Menyembunyikan scrollbar di Firefox & IE/Edge lama */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Menyembunyikan visual scrollbar di Chrome, Safari, dan Edge modern */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(to top, #000000, #1a1a1a, white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #f1f5f9;
+    /* Background Animasi Mesh Gradient Dark Mode */
+    background: linear-gradient(135deg, #0f172a, #1e1b4b, #090d16);
     background-size: 200% 200%;
-    animation: movebg 5s linear infinite;
+    animation: gradientMove 12s ease infinite;
+    min-height: 100vh;
+    padding: 20px 15px;
+    overflow-y: scroll;
 }
 
-@keyframes movebg {
-    0% {
-        background-position: 0% 100%;
-    }
-
-    100% {
-        background-position: 0% 0%;
-    }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-hr {
-    max-width: 350px;
-}
-
-h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: white;
-    padding: 2%;
-    border-radius: 15px;
-}
-
-p {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    text-align: justify;
-    padding: 2%;
-}
-
-/* Class Selector */
-.container {
-    background-color: white;
-    max-width: 400px;
-    margin: 30px auto;
-    padding: 1%;
-    border-radius: 15px;
-    border: black solid 0.50mm;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-.h3indiv {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    text-align: center;
-}
-
-.hr {
-    max-width: 400px;
-}
-
-.footer {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    text-align: center;
-    color: white;
-}
-
-/* Efek awal: elemen transparan */
-.fade {
+/* ==========================================================================
+   2. POP-UP WELCOME MODAL
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
 }
 
-/* Efek aktif: elemen muncul */
-.fade.show {
+.modal-overlay.active {
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
 }
 
-.profile-title {
+.modal-card {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.modal-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ffffff;
+}
+
+.modal-body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. HEADER & PROFIL (GLASSMORPHISM)
+   ========================================================================== */
+.profile-header {
+    position: relative;
+    max-width: 500px;
+    margin: 10px auto 30px auto;
+}
+
+.profile-card {
     display: flex;
     align-items: center;
-    /* sejajarkan vertikal */
-    justify-content: center;
-    /* posisikan di tengah */
-    gap: 15px;
-    /* jarak antara foto dan teks */
-    background-color: white;
-    padding: 10px;
-    border-radius: 15px;
-    max-width: 450px;
-    margin: 20px auto;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.avatar-wrapper {
+    position: relative;
 }
 
 .profile-img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #38bdf8;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .profile-img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    border-color: #818cf8;
 }
 
+.status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: #22c55e;
+    border: 2px solid #0f172a;
+    border-radius: 50%;
+}
+
+.profile-info h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   4. DROPDOWN MENU NAVIGASI
+   ========================================================================== */
 .menu {
     position: absolute;
-    top: 100px;
-    /* muncul di bawah foto */
+    top: calc(100% + 12px);
     left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(-50%) translateY(-10px);
+    width: 100%;
+    max-width: 260px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    z-index: 999;
-    /* penting agar tidak ketutup elemen lain */
-}
-
-.menu li {
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-}
-
-.menu li:last-child {
-    border-bottom: none;
-}
-
-.menu li:hover {
-    background-color: #f0f0f0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
 }
 
 .menu.show {
@@ -138,31 +232,140 @@ p {
     transform: translateX(-50%) translateY(0);
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 10px; /* beri ruang di sisi layar */
-  }
+.menu ul {
+    list-style: none;
+    padding: 6px;
+}
 
-  .container {
-    max-width: 95%;   /* biar tidak sempit */
-    margin: 20px auto; /* jarak dari tepi layar */
-    padding: 15px;     /* isi konten lebih lega */
-  }
+.menu li a {
+    display: block;
+    padding: 10px 16px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-  .profile-title {
-    flex-direction: column; /* foto di atas nama saat layar kecil */
-    gap: 10px;
-    padding: 15px;
-  }
+.menu li a:hover {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
 
-  h3 {
-    font-size: 18px;
-    padding: 8px;
-  }
+/* ==========================================================================
+   5. KONTEN UTAMA (CARDS)
+   ========================================================================== */
+.main-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
 
-  p {
-    font-size: 14px;
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 22px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.card-header {
+    margin-bottom: 14px;
+}
+
+.card h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 1px;
+}
+
+.card-header .line {
+    width: 40px;
+    height: 3px;
+    background: #818cf8;
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+.card p {
+    font-size: 0.9rem;
     line-height: 1.6;
+    color: #cbd5e1;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+.card a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 10px;
-  }
+    border-radius: 10px;
+    font-size: 0.82rem;
+    text-align: center;
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   6. ANIMASI FADE-IN SAAT SCROLL & FOOTER
+   ========================================================================== */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.78rem;
+    padding: 20px 0 10px 0;
+}
+
+/* Responsif Layar HP */
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 14px;
+    }
+    
+    .profile-info h1 {
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: 18px;
+    }
 }

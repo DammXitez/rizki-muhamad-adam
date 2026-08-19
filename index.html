@@ -1,94 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <title>Rizki Muhamad Adam</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Rizki Muhamad Adam | Portofolio</title>
+
+    <!-- Font Google: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("profile-menu");
-    menu.classList.toggle("show");
-}
-
-// Tutup otomatis saat scroll
-window.addEventListener("scroll", () => {
-    const menu = document.getElementById("profile-menu");
-    if (menu.classList.contains("show")) {
-        menu.classList.remove("show");
-    }
-});
-</script>
-
-
 <body>
-    <div class="profile-title">
-        <img src="assets/rizkimuhamadadam.jpeg" alt="Foto Profil" class="profile-img" onclick="toggleMenu()">
-        <h3>Rizki Muhamad Adam</h3>
-    </div><br><br><hr class="hr"><br><br>
 
-    <ul id="profile-menu" class="menu">
-        <li><a href="#siapasaya">Siapa Saya?</a></li>
-        <li><a href="#information">Information</a></li>
-        <li><a href="#otherinformation">Other Information</a></li>
-    </ul>
-
-    <div class="container fade">
-        <h3 class="h3indiv" id="siapasaya">SIAPA SAYA?</h3><hr>
-
-        <p>
-            Halo, perkenalkan nama saya <strong>Rizki Muhamad Adam</strong>
-            lahir di <strong>Banjarnegara</strong> pada tahun <strong>2XXX</strong>
-            dan umur saya saat ini menginjak <strong>XX tahun</strong>, Saya bersekolah di <Strong>SMK Negeri 1 Wanayasa</Strong>
-            program keahlian saya yaitu <strong>Teknik Jaringan Komputer & Telekomunikasi (TJKT)</strong>.
-        </p>
+    <!-- Pop-up Modal Pesan Selamat Datang -->
+    <div id="welcome-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>👋 Selamat Datang</h3>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Terima kasih telah berkunjung ke website portofolio saya! Website ini dibuat sebagai wadah belajar dan eksplorasi mandiri dalam bidang <strong>Web Development</strong>.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-modal-btn" class="btn-primary">Jelajahi Website</button>
+            </div>
+        </div>
     </div>
 
-    <div class="container fade">
-        <h3 class="h3indiv" id="information">INFORMATION</h3><hr>
-        <p>
-            Ini adalah website simple yang saya buat sendiri dengan mempelajari <strong>Cara Penggunaan Code Yang Benar, Mempelajari Fungsi-Fungsi Disetiap Codenya</strong> melalui <strong>Youtube</strong> maupun <strong>Google</strong>.
-            <br><br>
-            Apasih yang mendorong saya untuk mempelajari <strong>Cara Membuat Website</strong>?
-            Saya ingin disuatu hari nanti saya menjadi seorang <strong>Profesional Pengembang Web (Web Development)</strong> dan yang paling mendorong saya agar mempelajari cara membuat website yaitu -
-            rasa ingin tahu tentang <strong>Bagaimana Sih Logika Pemrograman Website/Alur Logika Pembuatan Website?</strong>, Jadi dari situ saya memutuskan untuk belajar terus menerus sampai impian
-            saya tercapai!.
-        </p>
-    </div>
+    <!-- Header Profil -->
+    <header class="profile-header">
+        <div class="profile-card">
+            <div class="avatar-wrapper">
+                <img src="assets/rizkimuhamadadam.jpeg" alt="Foto Profil Rizki Muhamad Adam" class="profile-img" id="profile-img">
+                <span class="status-indicator" title="Aktif Belajar"></span>
+            </div>
+            <div class="profile-info">
+                <h1>Rizki Muhamad Adam</h1>
+                <p class="subtitle">Siswa TJKT & Aspiring Web Developer</p>
+            </div>
+        </div>
 
-    <div class="container fade" id="otherinformation">
-        <h3 class="h3indiv">OTHER INFORMATION</h3><hr>
-        <p>
-            Untuk mempublikasikan website ini saya menggunakan platfrom <strong><a href="https://www.netlify.com/">Netlify</a></strong> karena <strong>Gratis</strong>, Hanya tinggal login melalui <strong>Google</strong> dan kamu sudah bisa mempublikasikan
-            website yang kamu buat!
-        </p>
-    </div>
+        <!-- Dropdown Menu Navigasi -->
+        <nav id="profile-menu" class="menu">
+            <ul>
+                <li><a href="#siapasaya">Siapa Saya?</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#information">Informasi</a></li>
+                <li><a href="#otherinformation">Lainnya</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <p class="footer">
-        &copy; Rizki Muhamad Adam - 2026
-    </p>
+    <!-- Konten Utama -->
+    <main class="main-content">
 
-    <!-- Scrolling Fade In Out For Memperbagus Visual -->
-    <script>
-    // Ambil semua elemen dengan class "fade"
-    const faders = document.querySelectorAll('.fade');
+        <!-- Seksi 1: Siapa Saya -->
+        <section class="card fade" id="siapasaya">
+            <div class="card-header">
+                <h2>SIAPA SAYA?</h2>
+                <div class="line"></div>
+            </div>
+            <p>
+                Halo! Saya <strong>Rizki Muhamad Adam</strong>, lahir di <strong>Banjarnegara</strong>. Saat ini saya menempuh pendidikan di <strong>SMK Negeri 1 Wanayasa</strong> pada program keahlian <strong>Teknik Jaringan Komputer & Telekomunikasi (TJKT)</strong>.
+            </p>
+        </section>
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            } else {
-                entry.target.classList.remove('show');
-            }
-        });
-    });
+        <!-- Seksi 2: Keahlian & Fokus -->
+        <section class="card fade" id="skills">
+            <div class="card-header">
+                <h2>KEAHLIAN & FOKUS</h2>
+                <div class="line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">HTML5 & CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Jaringan Komputer</div>
+                <div class="skill-item">Web Deployment</div>
+            </div>
+        </section>
 
-    faders.forEach(fade => {
-        observer.observe(fade);
-    });
-</script>
+        <!-- Seksi 3: Informasi & Cita-Cita -->
+        <section class="card fade" id="information">
+            <div class="card-header">
+                <h2>INFORMASI</h2>
+                <div class="line"></div>
+            </div>
+            <p>
+                Website ini dibuat sebagai wadah eksplorasi mandiri dalam mempelajari <strong>struktur kode, tata letak dan logika pemrograman web</strong> secara otodidak melalui sumber-sumber seperti YouTube dan Google.
+            </p>
+            <p>
+                Impian besar saya adalah menjadi seorang <strong>Profesional Web Developer</strong>. Rasa penasaran terhadap alur logika di balik pembuatan aplikasi berbasis web menjadi pendorong utama saya untuk terus belajar.
+            </p>
+        </section>
 
+        <!-- Seksi 4: Informasi Lainnya -->
+        <section class="card fade" id="otherinformation">
+            <div class="card-header">
+                <h2>INFORMASI LAINNYA</h2>
+                <div class="line"></div>
+            </div>
+            <p>
+                Website portofolio ini di-<i>hosting</i> secara gratis melalui platform <strong><a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a></strong>. Platform ini sangat efisien untuk mempublikasikan proyek web secara cepat langsung dari kode sumber.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Rizki Muhamad Adam. Dibuat dengan semangat belajar.</p>
+    </footer>
+
+    <!-- Script JS Eksternal -->
+    <script src="js/main.js"></script>
 </body>
 </html>
